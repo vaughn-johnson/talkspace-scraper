@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`errorMessage matches snapshot with message "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" 1`] = `
+"
+========================================
+==  eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee  ==
+========================================
+"
+`;
+
+exports[`errorMessage matches snapshot with message "error" 1`] = `
+"
+=============
+==  error  ==
+=============
+"
+`;
+
+exports[`errorMessage matches snapshot with message null 1`] = `
+"
+============
+==  null  ==
+============
+"
+`;
+
+exports[`errorMessage matches snapshot with message undefined 1`] = `
+"
+=================
+==  undefined  ==
+=================
+"
+`;
