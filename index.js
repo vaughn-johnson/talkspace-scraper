@@ -1,51 +1,19 @@
-import axios from 'axios';
+/* eslint-disable */
 
-const authenticate = async () => {
-  const body = { userType: 'CLIENT' };
+//  I am using top-level await, which is in stage three proposal
+// Unfortunately, ESLint only supports stage four proposals
 
-  const encodedCreds = Buffer.from(`${process.env.USERNAME}:${process.env.PASSWORD}`, 'utf8')
-                         .toString('base64')
-  const options = {
-    headers: { Authorization: `Basic ${encodedCreds}` }
-  };
+import scrapeMessages from './talkspace/index.js';
+import saveMessagesToDB from './mongo/index.js';
+import logError from './error/index.js';
 
-  const res = await axios.post(process.env.AUTH_URL, body, options);
-  const { userID, access: token } = res.data.data;
-  return { userID, token };
-};
+const args = process.argv.slice(2);
 
-// TODO: Allow user to specificy particular room
-const getRoomId = async (userID, token) => {
-  const url = `https://clientapi.talkspace.com/v2/clients/${userID}/rooms/last-messages`;
-  const options = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
+const overwrite = args ? args[0] === '-overwrite' : false
 
-  const res = await axios.get(url, options);
-
-  return res.data.data[0].roomId;
-};
-
-const scrapeMessages = async () => {
-  console.log(`Scraping the data for ${process.env.USERNAME} from Talkspace`);
-  const { userID, token } = await authenticate();
-
-  const body = {
-    params: {
-      "tid": await getRoomId(userID, token),
-      "lastMessageId": 0,
-      "limit": 2 ** 10, // TODO: guarantee scrape all messages
-      "loadMediaURLs": true
-    }
-  };
-
-  const options = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
-
-  const res = await axios.post(process.env.API_URL, body, options)
-
-  return res.data['result '].messages;
-};
-
-console.log(await scrapeMessages());
+try {
+  const messages = await scrapeMessages();
+  await saveMessagesToDB(messages, overwrite);
+} catch (e) {
+  logError(`Did not succeed: ${e.message}`);
+}
