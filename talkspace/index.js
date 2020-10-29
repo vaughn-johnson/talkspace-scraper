@@ -74,3 +74,4 @@ const scrapeMessages = async (authentication) => {
 };
 
 export default scrapeMessages;
+export { getRoomId, scrapeMessages };
