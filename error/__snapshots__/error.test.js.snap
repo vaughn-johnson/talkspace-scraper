@@ -16,18 +16,16 @@ exports[`errorMessage matches snapshot with message "error" 1`] = `
 "
 `;
 
-exports[`errorMessage matches snapshot with message null 1`] = `
+exports[`errorMessage matches snapshot with message "two differnt
+lines" 1`] = `
 "
-============
-==  null  ==
-============
+====================
+==  two differnt  ==
+==  lines         ==
+====================
 "
 `;
 
-exports[`errorMessage matches snapshot with message undefined 1`] = `
-"
-=================
-==  undefined  ==
-=================
-"
-`;
+exports[`errorMessage matches snapshot with message null 1`] = `undefined`;
+
+exports[`errorMessage matches snapshot with message undefined 1`] = `undefined`;

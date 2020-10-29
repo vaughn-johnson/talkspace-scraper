@@ -2,7 +2,7 @@
 //  I am using top-level await, which is in stage three proposal
 // Unfortunately, ESLint only supports stage four proposals
 
-import scrapeMessages from './talkspace/index.js';
+import { scrapeMessages } from './talkspace/index.js';
 import saveMessagesToDB from './mongo/index.js';
 import logError from './error/index.js';
 

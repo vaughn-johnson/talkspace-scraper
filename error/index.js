@@ -5,13 +5,21 @@ export const errorMessage = (msg) => {
   // == msg ==
   // =========
 
+  if (!msg) return null;
+
   const paddingLength = 2;
   const padding = ' '.repeat(paddingLength);
-  const { length } = `${msg}`;
+  const lines = msg.split('\n');
+  const maxLength = lines.map((line) => line.length)
+    .reduce((a, b) => (a > b ? a : b));
 
   // Make a sandwich
-  const bread = '='.repeat((length + 2 * (paddingLength + 2)));
-  const meat = `==${padding}${msg}${padding}==`;
+  const bread = '='.repeat((maxLength + 2 * (paddingLength + 2)));
+  const meat = lines.map((line) => {
+    const raggedRight = ' '.repeat(maxLength - line.length);
+    return `==${padding}${line}${raggedRight}${padding}==`;
+  }).join('\n');
+
   return `\n${bread}\n${meat}\n${bread}\n`;
 };
 

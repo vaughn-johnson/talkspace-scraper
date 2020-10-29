@@ -1,7 +1,8 @@
+import 'regenerator-runtime/runtime';
 import saveMessagesToDB from './index.js';
 import {
   insertMany, close, connect, deleteMany,
-} from './__mocks__/mongodb.js';
+} from './__mocks__/index.js';
 import logError from '../error/index.js';
 
 jest.mock('mongodb');
