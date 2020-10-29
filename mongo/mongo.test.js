@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime';
 import saveMessagesToDB from './index.js';
 import {
   insertMany, close, connect, deleteMany,
-} from './__mocks__/index.js';
+} from './__mocks__/mongodb.js';
 import logError from '../error/index.js';
 
 jest.mock('mongodb');
@@ -15,7 +15,7 @@ const messages = [
 
 describe('saveMessagesToDB', () => {
   beforeEach(async () => {
-    // jest.clearAllMocks();
+    jest.clearAllMocks();
   });
 
   it('is callable', async () => saveMessagesToDB([], true));
