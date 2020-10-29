@@ -9,14 +9,17 @@ const attemptMessage = (messages, overwrite) => {
 };
 
 const saveMessagesToDB = async (messages, overwrite = false) => {
-  console.log(attemptMessage(messages, overwrite));
-  const client = await MongoClient.connect(
-    process.env.MONGO_CONNECTION_STRING,
-    { useUnifiedTopology: true },
-  );
-  const db = client.db('talkspace');
+  let client;
 
   try {
+    console.log(attemptMessage(messages, overwrite));
+    client = await MongoClient.connect(
+      process.env.MONGO_CONNECTION_STRING,
+      { useUnifiedTopology: true },
+    );
+
+    const db = client.db('talkspace');
+
     // Destroy existing records
     if (overwrite) await db.collection('messages').deleteMany({});
 
@@ -26,7 +29,7 @@ const saveMessagesToDB = async (messages, overwrite = false) => {
     logError('Failed to save scraped messages to DB');
     throw e;
   } finally {
-    await client.close();
+    if (client) await client.close();
   }
 };
 

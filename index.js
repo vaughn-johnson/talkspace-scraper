@@ -1,5 +1,4 @@
-/* eslint-disable */
-
+/*eslint-disable */
 //  I am using top-level await, which is in stage three proposal
 // Unfortunately, ESLint only supports stage four proposals
 

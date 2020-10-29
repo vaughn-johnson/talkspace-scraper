@@ -7,7 +7,7 @@ export const errorMessage = (msg) => {
 
   const paddingLength = 2;
   const padding = ' '.repeat(paddingLength);
-  const { length } = `${msg}`
+  const { length } = `${msg}`;
 
   // Make a sandwich
   const bread = '='.repeat((length + 2 * (paddingLength + 2)));
