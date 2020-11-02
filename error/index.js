@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+
 export const errorMessage = (msg) => {
   // This is what we're going for
   //
@@ -23,4 +25,4 @@ export const errorMessage = (msg) => {
   return `\n${bread}\n${meat}\n${bread}\n`;
 };
 
-export default (msg) => console.log(errorMessage(msg));
+export default (msg) => console.log(chalk.red.bold(errorMessage(msg)));

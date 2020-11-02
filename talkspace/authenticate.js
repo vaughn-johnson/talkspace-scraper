@@ -23,9 +23,9 @@ const getRoomId = async (userID, token) => {
   }
 };
 
-const authenticate = async () => {
+const authenticate = async (username = process.env.USERNAME, password = process.env.PASSWORD) => {
   const body = { userType: 'CLIENT' };
-  const userPass = `${process.env.USERNAME}:${process.env.PASSWORD}`;
+  const userPass = `${username}:${password}`;
   const encodedCreds = Buffer.from(userPass, 'utf8').toString('base64');
 
   const options = {
@@ -41,7 +41,7 @@ const authenticate = async () => {
   } catch (e) {
     logError(
       `Failed to authenticate from ${AUTH_URL}\n`
-      + `with user:pass ${process.env.USERNAME}:${process.env.PASSWORD}`,
+      + `with user:pass ${username}:${password}`,
     );
     throw e;
   }

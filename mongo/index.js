@@ -8,13 +8,15 @@ const attemptMessage = (messages, overwrite) => {
   return `Attempting to ${writeWord} ${count} messages to mongodb`;
 };
 
-const saveMessagesToDB = async (messages, overwrite = false) => {
+const saveMessagesToDB = async (messages,
+  overwrite = false,
+  connectionString = process.env.MONGO_CONNECTION_STRING) => {
   let client;
 
   try {
     console.log(attemptMessage(messages, overwrite));
     client = await MongoClient.connect(
-      process.env.MONGO_CONNECTION_STRING,
+      connectionString,
       { useUnifiedTopology: true },
     );
 
