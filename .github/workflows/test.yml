@@ -24,7 +24,7 @@ jobs:
         node-version: '14'
     - uses: actions/checkout@v2
     - name: Build
-      run: yarn install --frozen-lockfile && yarn build --if-present
+      run: yarn install --frozen-lockfile
     - name: Test
       run: yarn test --silent
       
