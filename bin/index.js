@@ -15,7 +15,7 @@ const scrape = async () => {
     .option('-u, --username <string>', 'your talkspace username / email')
     .option('-p, --password <string>', 'Your talkspace passowrd')
     .option('-c, --connection-string <mongodb connection>', 'Mongo db connection string. If specified, will ignore --output-file')
-    .option('-f, --output-file <file>', 'output file to save JSON locally')
+    .option('-f, --output-file <file>', 'output file to save JSON locally');
 
   program.on('-h, --help', () => console.log(program.helpInformation()));
 
