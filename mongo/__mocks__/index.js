@@ -1,1 +1,2 @@
-export const saveMessagesToDB = () => true;
+const saveMessagesToDB = () => true;
+export default saveMessagesToDB;

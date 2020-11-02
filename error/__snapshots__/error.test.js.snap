@@ -26,6 +26,6 @@ lines" 1`] = `
 "
 `;
 
-exports[`errorMessage matches snapshot with message null 1`] = `undefined`;
+exports[`errorMessage matches snapshot with message null 1`] = `null`;
 
-exports[`errorMessage matches snapshot with message undefined 1`] = `undefined`;
+exports[`errorMessage matches snapshot with message undefined 1`] = `null`;

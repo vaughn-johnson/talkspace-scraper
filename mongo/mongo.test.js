@@ -47,12 +47,7 @@ describe('saveMessagesToDB', () => {
         connect.mockImplementation(initialImplementation);
       });
 
-      it('raises an error', async () => {
-        expect(async () => saveMessagesToDB(messages))
-          .rejects.toThrow();
-      });
-
-      it('lets the user know', async () => {
+      it('fails and tells the user', async () => {
         try {
           await saveMessagesToDB(messages);
         } catch (e) {
@@ -73,12 +68,7 @@ describe('saveMessagesToDB', () => {
         insertMany.mockImplementation(initialImplementation);
       });
 
-      it('raises an error', async () => {
-        expect(async () => saveMessagesToDB(messages))
-          .rejects.toThrow();
-      });
-
-      it('lets the user know', async () => {
+      it('fails and tells the user', async () => {
         try {
           await saveMessagesToDB(messages);
         } catch (e) {

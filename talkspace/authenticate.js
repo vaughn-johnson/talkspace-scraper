@@ -1,7 +1,7 @@
 import axios from 'axios';
 import logError from '../error/index.js';
 
-const AUTH_URL = 'https://clientapi.talkspace.com/v2/auth';
+export const AUTH_URL = 'https://clientapi.talkspace.com/v2/auth';
 
 // TODO: Allow user to specificy particular room by therapist
 // A Talkspace room is a set of messages between a client and therapist
@@ -40,7 +40,8 @@ const authenticate = async () => {
     return { userID, roomID, token };
   } catch (e) {
     logError(
-      `Failed to authenticate from ${AUTH_URL}\n``with user:pass ${process.env.USERNAME}:${process.env.PASSWORD}`,
+      `Failed to authenticate from ${AUTH_URL}\n`
+      + `with user:pass ${process.env.USERNAME}:${process.env.PASSWORD}`,
     );
     throw e;
   }
