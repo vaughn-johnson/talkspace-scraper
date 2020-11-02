@@ -19,6 +19,9 @@ jobs:
         node-version: [14.x]
 
     steps:
+    - uses: actions/setup-node@v2-beta
+      with:
+        node-version: '14'
     - uses: actions/checkout@v2
     - name: Build
       run: yarn install --frozen-lockfile && yarn build --if-present
