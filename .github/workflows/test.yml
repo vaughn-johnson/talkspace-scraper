@@ -19,9 +19,14 @@ jobs:
         node-version: [14.x]
 
     steps:
+    - uses: actions/setup-node@v2-beta
+      with:
+        node-version: '14'
     - uses: actions/checkout@v2
-    - name: Build
-      run: npm ci && npm run build --if-present
+    - name: Install Modules
+      run: yarn install --frozen-lockfile
+    - name: Lint
+      run: yarn run lint
     - name: Test
-      run: npm test
+      run: yarn test --silent
       
