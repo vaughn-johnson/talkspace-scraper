@@ -12,10 +12,14 @@ dotenv.config();
 const scrape = async () => {
   program.description('Scrape your message history from Talkspace')
     .option('-o, --overwrite', 'overwrite the existing records in mongodb instance')
-    .option('-u, --username <type>', 'your talkspace username / email')
-    .option('-p, --password <type>', 'Your talkspace passowrd')
-    .option('-c, --connection-string <type>', 'Mongo db connection string.')
-    .option('-f, --output-file <type>', 'output file to save JSON locally');
+    .option('-u, --username <string>', 'your talkspace username / email')
+    .option('-p, --password <string>', 'Your talkspace passowrd')
+    .option('-c, --connection-string <mongodb connection>', 'Mongo db connection string. If specified, will ignore --output-file')
+    .option('-f, --output-file <file>', 'output file to save JSON locally')
+
+  program.on('-h, --help', () => console.log(program.helpInformation()));
+
+  program.parse(process.argv);
 
   const {
     username, password, connectionString, overwrite, outputFile,

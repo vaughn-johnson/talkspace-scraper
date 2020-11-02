@@ -30,7 +30,7 @@
     "regenerator-runtime": "^0.13.7"
   },
   "bin": {
-    "scrapeTalksapce": "./bin/index.js"
+    "scrapeTalkspace": "./bin/index.js"
   },
   "scripts": {
     "scrapeAndOverwrite": "node -r dotenv/config index.js -overwrite",
