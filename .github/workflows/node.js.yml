@@ -22,8 +22,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build
       run: npm ci && npm run build --if-present
-    - name: Lint
-      run: eslint . --ext .js,.jsx,.ts,.tsx
     - name: Test
       run: npm test
       
