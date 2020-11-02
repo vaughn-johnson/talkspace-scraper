@@ -23,8 +23,10 @@ jobs:
       with:
         node-version: '14'
     - uses: actions/checkout@v2
-    - name: Build
+    - name: Install Modules
       run: yarn install --frozen-lockfile
+    - name: Lint
+      run: eslint .
     - name: Test
       run: yarn test --silent
       
