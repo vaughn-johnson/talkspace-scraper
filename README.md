@@ -36,7 +36,7 @@ MONGO_CONNECTION_STRING=mongodb://localhost
 Make sure you're using the [correct version of node](https://github.com/nvm-sh/nvm) specified in `package.json`. If you are using mongodb, the collection `talkspace` does not need to exist a priori for the scripts to work.
 
 ### using `.env`
-Make sure you've followed the steps above to set up your `.env`, and then call `scrapeTalkspace`. If you have not defined a mongodb connection, feel free to use the `-f` flag to designate a specific file you want your data outputted to (e.g. `scrape-talksapce -f output.json`).
+Make sure you've followed the steps above to set up your `.env`, and then call `scrape-talkspace`. If you have not defined a mongodb connection, feel free to use the `-f` flag to designate a specific file you want your data outputted to (e.g. `scrape-talksapce -f output.json`).
 
 ### using command-line arguments
 ```
