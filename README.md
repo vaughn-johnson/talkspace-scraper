@@ -3,6 +3,12 @@ A script that pull your entire message history from Talkspace
 
 # How to use
 
+## Install
+
+```{bash}
+npm install talkspace-scraper
+```
+
 ## (optional) Setup MongoDB
 This step isn't strictly neccesary. The tool will output to a file if you do not specify a mongodb connection.
 
@@ -51,15 +57,6 @@ Options:
 
 ---
 You can validate that the script worked using a gui like [this one](https://www.mongodb.com/try/download/compass)
-
-# Known Issues
-
-## Message Limit
-Right now, the script will only take the 1024 most recent messages between you and your therapist.
-It is naive to the possibility you could have more than 1024 messages.
-
-## Multiple Therapist Rooms
-A room is one of the conversations on the right side of the application. The script return the data from _only_ the room that _has most recently been messaged_. If you would like data from another room, the current work around is to message that room with a dummy message to make it the most recent.
 
 ---
 
