@@ -34,7 +34,7 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         fail_ci_if_error: true 
-        directory: ./coverage/reports/ 
+        directory: ./coverage/
         path_to_write_report: ./coverage/codecov_report.gz
 
     
