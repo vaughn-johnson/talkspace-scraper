@@ -34,6 +34,9 @@ MONGO_CONNECTION_STRING=mongodb://localhost
 ```
 
 ## Use the tool 
+
+[![asciicast](https://asciinema.org/a/tHkgoqDqAiMp5ScGdYR2OASHF.svg)](https://asciinema.org/a/tHkgoqDqAiMp5ScGdYR2OASHF)
+
 Make sure you're using the [correct version of node](https://github.com/nvm-sh/nvm) specified in `package.json`. If you are using MongoDB, the collection `talkspace` does not need to exist a priori for the scripts to work.
 
 ### using `.env`
