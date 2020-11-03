@@ -41,7 +41,6 @@ const scrape = async () => {
   const connectionString = process.env.MONGO_CONNECTION_STRING
     || readlineSync.question(mongoPrompt, { hideEchoBack: true });
 
-
   try {
     const messages = await scrapeMessages(
       await authenticate(username, password),
