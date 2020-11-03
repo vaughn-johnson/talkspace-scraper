@@ -60,3 +60,9 @@ It is naive to the possibility you could have more than 1024 messages.
 
 ## Multiple Therapist Rooms
 A room is one of the conversations on the right side of the application. The script return the data from _only_ the room that _has most recently been messaged_. If you would like data from another room, the current work around is to message that room with a dummy message to make it the most recent.
+
+---
+
+# How to contribute
+
+Have a missing feature that you want? Open a pull-request! Just make sure your PR passes the `Node.js CI` workflow with a passing status.
