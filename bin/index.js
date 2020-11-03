@@ -28,17 +28,17 @@ const scrape = async () => {
   const username = program.username || process.env.USERNAME || readlineSync.question(usernamePrompt); 
 
   const passwordPrompt = 'What is your Talkspace password? > '
-  const password = process.env.PASSWORD || readlineSync.question(passwordPrompt);
+  const password = process.env.PASSWORD || readlineSync.question(passwordPrompt, { hideEchoBack: true });
   
   const mongoPrompt = `If you'd like to use MongoDB, paste a connection string. If not, leave blank> `;
-  const connectionString = process.env.MONGO_CONNECTION_STRING || readlineSync.question(mongoPrompt); 
+  const connectionString = process.env.MONGO_CONNECTION_STRING || readlineSync.question(mongoPrompt, { hideEchoBack: true }); 
 
   try {
     const messages = await scrapeMessages(
       await authenticate(username, password),
     );
 
-    if (connectionString) {
+    if (!connectionString) {
       fs.writeFile(outputFile || 'messages.json', JSON.stringify(messages), (err) => {
         if (err) {
           logError('Failed to save messages to local file');
