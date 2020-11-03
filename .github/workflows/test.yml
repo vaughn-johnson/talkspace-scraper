@@ -28,7 +28,7 @@ jobs:
     - name: Lint
       run: yarn run lint
     - name: Test
-      run: jest --ci --coverage && codecov
+      run: yarn jest --ci --coverage && codecov
     - name: Code coverage
       uses: codecov/codecov-action@v1
       with:
