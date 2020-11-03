@@ -37,7 +37,8 @@
     "scrapeAndOverwrite": "node -r dotenv/config index.js -overwrite",
     "scrapeAndAppend": "node -r dotenv/config index.js",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "coverage": "codecov"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
