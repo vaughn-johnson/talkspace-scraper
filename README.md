@@ -3,6 +3,12 @@ A script that pull your entire message history from Talkspace
 
 # How to use
 
+## Install
+
+```{bash}
+npm install talkspace-scraper
+```
+
 ## (optional) Setup MongoDB
 This step isn't strictly neccesary. The tool will output to a file if you do not specify a mongodb connection.
 
