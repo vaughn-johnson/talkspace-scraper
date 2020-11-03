@@ -36,7 +36,7 @@
   "scripts": {
     "scrapeAndOverwrite": "node -r dotenv/config index.js -overwrite",
     "scrapeAndAppend": "node -r dotenv/config index.js",
-    "test": "jest",
+    "test": "jest --ci --coverage",
     "lint": "eslint .",
     "coverage": "codecov"
   },
