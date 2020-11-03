@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A script to scrape your entire message history from Talkspace",
   "type": "module",
-  "main": "./bin/index.js",
+  "main": "index.js",
   "repository": "https://github.com/vaughn-johnson/talkspace-scraper.git",
   "author": "Vaughn Johnson <v@ughn.io>",
   "license": "MIT",
