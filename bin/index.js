@@ -14,7 +14,8 @@ const scrape = async () => {
   program.description('Scrape your message history from Talkspace')
     .option('-o, --overwrite', 'overwrite the existing records in MongoDB instance')
     .option('-u, --username <string>', 'your Talkspace username / email')
-    .option('-f, --output-file <file>', 'output file to save JSON locally');
+    .option('-f, --output-file <file>',
+      'output file to save JSON locally (defaults to messages.json)');
 
   program.on('-h, --help', () => console.log(program.helpInformation()));
 
