@@ -6,6 +6,7 @@ import fs from 'fs';
 import { scrapeMessages, authenticate } from '../talkspace/index.js';
 import saveMessagesToDB from '../mongo/index.js';
 import logError from '../error/index.js';
+import readlineSync from 'readline-sync';
 
 dotenv.config();
 
@@ -13,8 +14,6 @@ const scrape = async () => {
   program.description('Scrape your message history from Talkspace')
     .option('-o, --overwrite', 'overwrite the existing records in MongoDB instance')
     .option('-u, --username <string>', 'your Talkspace username / email')
-    .option('-p, --password <string>', 'Your Talkspace passowrd')
-    .option('-c, --connection-string <MongoDB connection>', 'Mongo db connection string. If specified, will ignore --output-file')
     .option('-f, --output-file <file>', 'output file to save JSON locally');
 
   program.on('-h, --help', () => console.log(program.helpInformation()));
@@ -22,25 +21,24 @@ const scrape = async () => {
   program.parse(process.argv);
 
   const {
-    username, password, connectionString, overwrite, outputFile,
+    overwrite, outputFile,
   } = program;
 
-  if (!username && !process.env.USERNAME) {
-    logError('You need to specify your Talkspace email using -username or in a .env');
-    return;
-  }
+  const usernamePrompt = 'What is your Talkspace username / email? > ';
+  const username = program.username || process.env.USERNAME || readlineSync.question(usernamePrompt); 
 
-  if (!password && !process.env.PASSWORD) {
-    logError('You need to specify your Talkspace password using -password or in a .env');
-    return;
-  }
+  const passwordPrompt = 'What is your Talkspace password? > '
+  const password = process.env.PASSWORD || readlineSync.question(passwordPrompt);
+  
+  const mongoPrompt = `If you'd like to use MongoDB, paste a connection string. If not, leave blank> `;
+  const connectionString = process.env.MONGO_CONNECTION_STRING || readlineSync.question(mongoPrompt); 
 
   try {
     const messages = await scrapeMessages(
       await authenticate(username, password),
     );
 
-    if (!connectionString && !process.env.MONGO_CONNECTION_STRING) {
+    if (connectionString) {
       fs.writeFile(outputFile || 'messages.json', JSON.stringify(messages), (err) => {
         if (err) {
           logError('Failed to save messages to local file');
