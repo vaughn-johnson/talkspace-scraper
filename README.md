@@ -1,4 +1,7 @@
 # Talkspace Scraper
+![Build](https://github.com/vaughn-johnson/talkspace-scraper/workflows/Node.js%20CI/badge.svg)
+![Codecov](https://img.shields.io/codecov/c/github/vaughn-johnson/talkspace-scraper)
+
 A commandline application that pulls your entire message history from Talkspace
 
 # Installation
